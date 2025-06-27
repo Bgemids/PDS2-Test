@@ -14,16 +14,16 @@ void SistemaAgencia::_inicializarDados() {
     _agentes.push_back(std::make_shared<AgenteDeViagem>("agt001", "Cecília Meireles", "cecilia@email.com", "agente123"));
 
     // Cria pacotes nacionais
-    auto pacoteBH_SP = std::make_shared<PacoteTuristico>("pct01", "Belo Horizonte - São Paulo", "Pacote para São Paulo, 4 dias");
+    std::shared_ptr<PacoteTuristico> pacoteBH_SP = std::make_shared<PacoteTuristico>("pct01", "Belo Horizonte - São Paulo", "Pacote para São Paulo, 4 dias");
     pacoteBH_SP->adicionarProduto(std::make_shared<Voo>("voo001", "Voo BH-SP", "Voo", 1200, 10, "Belo Horizonte", "São Paulo", "2025-10-10", "2025-10-14", "Azul"));
     _pacotesNacionais.push_back(pacoteBH_SP);
     
-    auto pacoteBH_RJ = std::make_shared<PacoteTuristico>("pct02", "Belo Horizonte - Rio de Janeiro", "Pacote para o Rio, 5 dias");
+    std::shared_ptr<PacoteTuristico> pacoteBH_RJ = std::make_shared<PacoteTuristico>("pct02", "Belo Horizonte - Rio de Janeiro", "Pacote para o Rio, 5 dias");
     pacoteBH_RJ->adicionarProduto(std::make_shared<Voo>("voo002", "Voo BH-RJ", "Voo", 2000, 15, "Belo Horizonte", "Rio de Janeiro", "2025-11-15", "2025-11-20", "Gol"));
     _pacotesNacionais.push_back(pacoteBH_RJ);
     
     // Cria pacote internacional
-    auto pacoteBH_SCL = std::make_shared<PacoteTuristico>("pct03", "Belo Horizonte - Santiago", "Pacote para Santiago, 7 dias");
+    std::shared_ptr<PacoteTuristico> pacoteBH_SCL = std::make_shared<PacoteTuristico>("pct03", "Belo Horizonte - Santiago", "Pacote para Santiago, 7 dias");
     pacoteBH_SCL->adicionarProduto(std::make_shared<Voo>("voo003", "Voo BH-SCL", "Voo", 5000, 5, "Belo Horizonte", "Santiago", "2026-01-20", "2026-01-27", "LATAM"));
     _pacotesInternacionais.push_back(pacoteBH_SCL);
 }
@@ -74,13 +74,13 @@ void SistemaAgencia::_menuViajante() {
         switch (escolha) {
             case 1:
                 std::cout << "\n--- Pacotes Nacionais Disponíveis ---\n";
-                for (const auto& pacote : _pacotesNacionais) {
+                for (const std::shared_ptr<PacoteTuristico>& pacote : _pacotesNacionais) {
                     std::cout << pacote->getDetalhesPacote() << std::endl;
                 }
                 break;
             case 2:
                 std::cout << "\n--- Pacotes Internacionais Disponíveis ---\n";
-                for (const auto& pacote : _pacotesInternacionais) {
+                for (const std::shared_ptr<PacoteTuristico>& pacote : _pacotesInternacionais) {
                     std::cout << pacote->getDetalhesPacote() << std::endl;
                 }
                 break;
