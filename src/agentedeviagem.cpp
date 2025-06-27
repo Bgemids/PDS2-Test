@@ -31,7 +31,7 @@ void AgenteDeViagem::criarPacote(std::vector<std::shared_ptr<PacoteTuristico>>& 
     nomePacote = origem + " - " + destino;
     descPacote = "Pacote de " + std::to_string(dias) + " dias para " + destino;
 
-    auto novoPacote = std::make_shared<PacoteTuristico>("pct" + std::to_string(pacotesNacionais.size() + pacotesInternacionais.size() + 1), nomePacote, descPacote);
+    std::shared_ptr<PacoteTuristico> novoPacote = std::make_shared<PacoteTuristico>("pct" + std::to_string(pacotesNacionais.size() + pacotesInternacionais.size() + 1), nomePacote, descPacote);
     novoPacote->adicionarProduto(std::make_shared<Voo>("voo_gen", nomePacote, descPacote, preco, 20, origem, destino, "a definir", "a definir", "a definir"));
     
     std::cout << "Pacote Nacional ou Internacional? (1 - Nacional, 2 - Internacional): ";
@@ -48,6 +48,5 @@ void AgenteDeViagem::criarPacote(std::vector<std::shared_ptr<PacoteTuristico>>& 
 }
 
 void AgenteDeViagem::exibirPainel() const {
-    // A lógica principal do menu do agente está na main para interagir com os vetores de pacotes
     std::cout << "\n--- Painel do Agente de Viagem: " << getNome() << " ---" << std::endl;
 }
