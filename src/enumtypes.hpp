@@ -1,7 +1,0 @@
-#ifndef ENUMTYPES_HPP
-#define ENUMTYPES_HPP
-
-enum class TipoRole { VIAJANTE, AGENTE_VIAGEM, ADMINISTRADOR };
-enum class StatusReserva { PENDENTE, CONFIRMADA, CANCELADA, CONCLUIDA };
-
-#endif // ENUMTYPES_HPP
